@@ -262,4 +262,26 @@ npx parcel build index.html
 ```
 
 Whenever we install a package from npm registry like react, react-dom or parcel, so a package-lock.json file is created along with node modules directory.
+
+---
+
+Parcel Features :-
+
+ * Created A Server
+ * HMR - Hot Module Replacement
+ * File Watcher algorithm - C++
+ * BUNDLING
+ * MINIFY
+ * Cleaning our Code
+ * Dev and Production Build
+ * Super Fast build algorithm
+ * Image Optimization
+ * Caching while development
+ * Compression
+ * Compatble with older version of browser
+ * HTTPS on dev
+ * port Number
+ * Consistent Hashing Algorithm
+ * Zero Config
+ * Transitive Dependencies
 ### Date : 01 Jan 2023
