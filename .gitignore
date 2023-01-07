@@ -6,3 +6,7 @@ dist/
 .DS_Store
 
 .parcel-cache
+
+Assignment3/node_modules
+Assignment3/dist
+Assignment3/.parcel-cache
