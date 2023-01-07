@@ -116,4 +116,48 @@ react.production.js => Minified and optimized production versions of React
 ```
 
 ![Output](output.png "codeOutput")
+
+---
+
+Code for the Concepts Taught In Class1 : -
+
+```
+// ------------------ React.createElement() ------------------------------->
+const heading1 = React.createElement(
+  "h1",
+  {
+    id: "title",
+    key: "h1",
+  },
+  "Heading1"
+);
+// console.log(heading1); // React.createElement() generates an object
+
+const heading2 = React.createElement(
+  "h2",
+  {
+    id: "title",
+    key: "h2",
+  },
+  "Heading2"
+);
+
+const container = React.createElement(
+  "div",
+  {
+    id: "container",
+    hello: "namaste", // we can declare any custom attributes as well => props in react
+  },
+  [heading1, heading2] // whenever siblings are present, we need to pass keys to them
+  // keys to uniquely identify every sibling and to avoid rerendering of each of them
+);
+
+// ------------------ Rendering ------------------------------->
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// passing a react element inside the root
+root.render(container);
+// heading will only be rendered, all other things will be replaced/overwritten by this
+
+```
 ### Date : 25 Dec 2022
