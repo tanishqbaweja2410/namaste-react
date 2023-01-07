@@ -1,3 +1,8 @@
 #container {
-    background-color: red;
+    background-color: yellow;
+}
+
+.styleImage {
+    width: 500px;
+    height: 400px;
 }

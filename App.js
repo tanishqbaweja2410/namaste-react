@@ -1,54 +1,47 @@
-/***
- *
- * Created A Server
- * HMR - Hot Module Replacement
- * File Watcher algorithm - C++
- * BUNDLING
- * MINIFY
- * Cleaning our Code
- * Dev and Production Build
- * Super Fast build algorithm
- * Image Optimization
- * Caching while development
- * Compression
- * Compatble with older version of browser
- * HTTPS on dev
- * port Number
- * Consistent Hashing Algorithm
- * Zero Config
- *
- * Transitive Dependencies
- */
-
 import React from "react";
 import ReactDOM from "react-dom/client";
-const heading1 = React.createElement(
-  "h1",
-  {
-    id: "title",
-  },
-  "Heading1"
-);
-const heading2 = React.createElement(
-  "h2",
-  {
-    id: "title",
-  },
-  "Heading2"
+
+const Title = () => (
+  <h2 id="title" key="h2">
+    Namaste React!!! From A React Element
+  </h2>
 );
 
-const container = React.createElement(
-  "div",
-  {
-    id: "container",
-    hello: "namaste", // we can declare any custom attributes as well => props in react
-  },
-  [heading1, heading2]
+const teacherProfile = (
+  <img
+    className="styleImage"
+    src="https://yt3.ggpht.com/ytc/AMLnZu-cSoO0e2Shro4sYkaKYCumlgllLCTYYNf7bk7G_g=s900-c-k-c0x00ffffff-no-rj"
+    alt="Akshay Saini"
+  />
 );
 
-// console.log(heading1);
+// ------------------ React Component ------------------------------->
+// Everything is a component in React
+// - Functional Component - NEW
+// - Class Based Component - OLD
+
+// Functional Component is nothing but a JS Function
+// it just returns some piece of JSX code or ReactElement
+const HeaderComponent = () => {
+  return (
+    <div>
+      {Title()}
+      <h1>Namaste React!!! From A Functional Component</h1>
+      <h2>By Akshay Saini</h2>
+    </div>
+  );
+};
+
+// const HeaderComponent = () => (
+//   <div>
+//     <h1>Namaste React Functional Component</h1>
+//     <h2>By Akshay Saini</h2>
+//   </div>
+// );
+
+// ------------------ Rendering ------------------------------->
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // passing a react element inside the root
-root.render(container);
+root.render(<HeaderComponent />);
 // heading will only be rendered, all other things will be replaced/overwritten by this
