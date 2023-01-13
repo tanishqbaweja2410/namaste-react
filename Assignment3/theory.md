@@ -106,12 +106,55 @@ const teacherProfile = (
   />
 );
 
+.styleImage {
+    width: 500px;
+    height: 400px;
+}
+
 
 // ------------------ Rendering ------------------------------->
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // passing a react element inside the root
 root.render(teacherProfile);
+// heading will only be rendered, all other things will be replaced/overwritten by this
+
+// ------------------ React Component ------------------------------->
+
+const Title = () => (
+  <h2 id="title" key="h2">
+    Namaste React!!! From A React Element
+  </h2>
+);
+
+// Everything is a component in React
+// - Functional Component - NEW
+// - Class Based Component - OLD
+
+// Functional Component is nothing but a JS Function
+// it just returns some piece of JSX code or ReactElement
+const HeaderComponent = () => {
+  return (
+    <div>
+      {Title()}
+      <h1>Namaste React!!! From A Functional Component</h1>
+      <h2>By Akshay Saini</h2>
+    </div>
+  );
+};
+
+// const HeaderComponent = () => (
+//   <div>
+//     <h1>Namaste React Functional Component</h1>
+//     <h2>By Akshay Saini</h2>
+//   </div>
+// );
+
+// ------------------ Rendering Components ------------------------------->
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// passing a react element inside the root
+root.render(<HeaderComponent />);
 // heading will only be rendered, all other things will be replaced/overwritten by this
 
 ```
