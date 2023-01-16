@@ -1,0 +1,17 @@
+{
+  "name": "assignment5",
+  "version": "1.0.0",
+  "description": "state-variable-usage",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.8.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
