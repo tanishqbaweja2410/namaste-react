@@ -1,16 +1,15 @@
 const Shimmer = () => {
   return (
-    <div className="restaurantList">
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
+    <div class="cardListShimmer">
+      {...Array(10).fill(
+        <div class="cardShimmer is-loading">
+          <div class="image"></div>
+          <div class="content">
+            <h2></h2>
+            <p></p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

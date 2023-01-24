@@ -12,19 +12,11 @@ function filterData(searchText, restaurants) {
 }
 
 const Body = () => {
-  // searchText is a local state variable
+  // let searchTxt = "KFC";
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
-  // const [filteredRestaurants, setFilteredRestaurants] = useState(restaurantList);
-  // console.log("render()");
 
-  // useEffect with an empty dependency array will get rendered only once after the initial render
-  // [] => empty dep list
-  // No dep list => after every rerender of the component
-  // [searchText] => once after the initial render + only when searchText changes
-
-  // when does our component rerenders ? state changes + prop changes
   useEffect(() => {
     // API Call
     getRestaurants();
@@ -46,7 +38,7 @@ const Body = () => {
   // if restraunt is empty -› shimmer Ui
   // if restraunt has data =› actual data UI
 
-  // Early Return 
+  // Early Return
   if (!allRestaurants) return null;
 
   return allRestaurants.length === 0 ? (
@@ -57,7 +49,7 @@ const Body = () => {
         <input
           type="text"
           className="search-input"
-          placeholder="Search"
+          placeholder="Search Restaurants .🍔.🍕.🍟.🥙.🥪.🍎.🧇."
           value={searchText}
           onChange={(e) => {
             // e.target.value => whatever you write in it
@@ -65,7 +57,7 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
+          className="search-button"
           onClick={() => {
             // need to filter the data
             const data = filterData(searchText, allRestaurants);
@@ -78,11 +70,15 @@ const Body = () => {
       </div>
       <div className="restaurantList">
         {/* map in jsx : - */}
-        {(filteredRestaurants?.length === 0) ? <h1>No Restaurant Found!</h1> : filteredRestaurants.map((restaurant) => {
-          return (
-            <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
-          );
-        })}
+        {filteredRestaurants?.length === 0 ? (
+          <h1>No Restaurant Found!</h1>
+        ) : (
+          filteredRestaurants.map((restaurant) => {
+            return (
+              <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
+            );
+          })
+        )}
       </div>
     </>
   );
