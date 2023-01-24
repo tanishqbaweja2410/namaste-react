@@ -38,7 +38,7 @@ export const Header = () => {
         // }
 
         // similarly, ternary ? operator is an expression whereas if else is a statement
-        (isLoggedIn ? <button className="login" onClick={() => {setIsLoggedIn(false)}}>Logout</button> : <button className="login" onClick={() => {setIsLoggedIn(true)}}>Login</button>)
+        (isLoggedIn ? <button onClick={() => {setIsLoggedIn(false)}}>Logout</button> : <button onClick={() => {setIsLoggedIn(true)}}>Login</button>)
       }
       
       
@@ -47,3 +47,4 @@ export const Header = () => {
 };
 
 export default Header;
+// export default just one thing
