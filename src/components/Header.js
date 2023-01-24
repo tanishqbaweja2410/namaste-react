@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Title = () => (
   <a href="/">
     <img
@@ -9,9 +11,15 @@ const Title = () => (
 );
 
 export const Header = () => {
+  // let title = "Food Villa";
+  // const [title, setTitle] = useState("Food Villa"); 
+  // console.log("render()");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="header">
       <Title />
+      {/* <h1>{title}</h1> */}
+      {/* <button onClick={() => setTitle("New Food App")}>Change Title</button> */}
       <div className="nav-items">
         <ul>
           <li>Home</li>
@@ -20,6 +28,20 @@ export const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
+      {
+        // any js code
+        // Expression => Accepted
+        // ((a = 10), console.log(a))
+        // Statements => Not Accepted
+        // if() {
+
+        // }
+
+        // similarly, ternary ? operator is an expression whereas if else is a statement
+        (isLoggedIn ? <button onClick={() => {setIsLoggedIn(false)}}>Logout</button> : <button onClick={() => {setIsLoggedIn(true)}}>Login</button>)
+      }
+      
+      
     </div>
   );
 };
