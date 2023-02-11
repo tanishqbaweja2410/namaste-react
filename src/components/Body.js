@@ -1,32 +1,24 @@
-import { restaurantList } from "../config";
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
-import useRestaurantList from "../utils/useRestaurantList";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/userContext";
+import useFetchFilterRestaurants from "../utils/useFetchFilterRestaurants";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const {user, setUser} = useContext(UserContext);
   
-  const allRestaurants = useRestaurantList();
-  if (!allRestaurants) return null;
-
-  // console.log(allRestaurants);
-  // console.log(filteredRestaurants);
-
-  useEffect(() => {
-    setFilteredRestaurants(allRestaurants);
-  }, [allRestaurants])
-  // console.log("render");
+  const {allRestaurants, filteredRestaurants, setFilteredRestaurants} = useFetchFilterRestaurants();
 
   // const isOnline = useOnline();
-
   // if(!isOnline) {
   //   return <h1>🔴 ... You are not connected to the internet! ...</h1>
   // }  
+
+  if (!allRestaurants) return null;
 
   return allRestaurants.length === 0 ? (
     <Shimmer />
@@ -52,6 +44,14 @@ const Body = () => {
         >
           Search
         </button>
+        <input value={user.name} onChange={e => setUser({
+          ...user,
+          name: e.target.value,
+        })}/>
+        <input value={user.email} onChange={e => setUser({
+          ...user,
+          email: e.target.value,
+        })}/>
       </div>
       <div className="flex flex-wrap">
         {filteredRestaurants?.length === 0 ? (
