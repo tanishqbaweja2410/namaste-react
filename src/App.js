@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,6 +9,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/userContext";
 
 // ------------------ Composing Components ------------------------------->
 
@@ -23,13 +24,27 @@ const About = lazy(() => import("./components/About"));
 // Upon On Demand Loading -> upon render -> suspend loading
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Akshay Saini",
+    email: "support@namastedev.com",
+  });
+
+  // whenever my user will modify, all places using the context will get updated
+
   return (
     <>
-      {/* i want header and footer to be present everywhere, 
+      <UserContext.Provider
+        value={{
+          user: user,
+          setUser: setUser,
+        }}
+      >
+        {/* i want header and footer to be present everywhere, 
       only children will update according to the route*/}
-      <Header />
-      <Outlet />
-      <Footer />
+        <Header />
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
     </>
   );
 };
@@ -47,7 +62,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "about",
-        element: <Suspense><About /></Suspense>,
+        element: (
+          <Suspense>
+            <About />
+          </Suspense>
+        ),
         errorElement: <Error />,
         // children: [
         //   {
